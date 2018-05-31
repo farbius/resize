@@ -22,7 +22,6 @@ module frame_resize_tb( );
     wire m_axis_tvalid;
     wire m_axis_tuser;
     wire m_axis_tlast;
-	reg  read_done_r, read_done_rr;
     wire [23 : 0] m_axis_tdata;
     wire read_done;
     `define PERIOD 5     // 100 MHz clock 
