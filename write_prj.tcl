@@ -26,7 +26,7 @@ update_compile_order -fileset sim_1
 set_property file_type SystemVerilog [get_files $ProjectPath/verilog_files/frame_resize.v]
 set_property file_type SystemVerilog [get_files $ProjectPath/verilog_files/BRAM_Memory_24x24.v]
 set_property file_type SystemVerilog [get_files $ProjectPath/verilog_files/frame_generator.v]
-set_property file_type SystemVerilog [get_files $ProjectPath/verilog_files/frame_resize.v]
+set_property file_type SystemVerilog [get_files $ProjectPath/verilog_files/frame_resize_tb.v]
 
 launch_simulation
 run all
