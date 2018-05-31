@@ -4,16 +4,16 @@
 %%
 clc
 clear 
-% fileID = -1;
-% errmsg = '';
-% while fileID < 0 
-%    disp(errmsg);
-%    filename = input('Open file: ', 's');
-%    [fileID,errmsg] = fopen(filename);
-%    I = imread(filename);
-% end
+fileID = -1;
+errmsg = '';
+while fileID < 0 
+   disp(errmsg);
+   filename = input('Open file: ', 's');
+   [fileID,errmsg] = fopen(filename);
+   I = imread(filename);
+end
 
-I = imread('picture_2v.jpg');
+% I = imread('picture_2v.jpg');
 [Nx, Ny, Nz] = size(I);
 
 sign         = 1;
@@ -42,9 +42,6 @@ fclose(fidR);
 fclose(fidG);
 fclose(fidB);
 
-
-
-
 %%
 fid = fopen('parameters.vh', 'w');
 fprintf(fid,'parameter N_y          = %d ;\n', Ny);
@@ -53,21 +50,6 @@ fprintf(fid,'parameter d_scaling    = %d ;\n', d_scaling);
 fprintf(fid,'parameter sign         = %d ;\n', sign);
 fclose(fid);
 
-
-
-
-% fltr = [1 1 1; 1 1 1; 1 1 1];
-
-% fltr = floor(ones(f_size).*1);
-% fltr = floor(magic(f_size)./4);
-% 
-% fid = fopen('Filter_Coe.txt', 'w');
-% for i = 1 : f_size
-%     for j = 1 : f_size
-%             fprintf(fid, '%x\n', fltr(i,j));
-%     end
-% end
-% fclose(fid);
 
 x_us = ceil(Nx*up_scaling)
 y_us = ceil(Ny*up_scaling)
@@ -145,14 +127,14 @@ for i = 1 : x_ds
     end 
 end
 I_decimate = uint8(I_decimate);
-% display('Please, start write_prj.tcl');
-% prompt = 'Press Enter when RTL modeling is done \n';
-% x = input(prompt);
+display('Please, start write_prj.tcl');
+prompt = 'Press Enter when RTL modeling is done \n';
+x = input(prompt);
 % 
 % % read processing data
-fidR = fopen(fullfile([pwd '\decimate_picture.sim\sim_1\behav\xsim'],'Rs_out.txt'), 'r');
-fidG = fopen(fullfile([pwd '\decimate_picture.sim\sim_1\behav\xsim'],'Gs_out.txt'), 'r');
-fidB = fopen(fullfile([pwd '\decimate_picture.sim\sim_1\behav\xsim'],'Bs_out.txt'), 'r');
+fidR = fopen(fullfile([pwd '\frame_resize.sim\sim_1\behav\xsim'],'Rs_out.txt'), 'r');
+fidG = fopen(fullfile([pwd '\frame_resize.sim\sim_1\behav\xsim'],'Gs_out.txt'), 'r');
+fidB = fopen(fullfile([pwd '\frame_resize.sim\sim_1\behav\xsim'],'Bs_out.txt'), 'r');
 R = zeros(1, Nx*Ny);
 G = zeros(1, Nx*Ny);
 B = zeros(1, Nx*Ny);
